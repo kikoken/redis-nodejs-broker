@@ -1,0 +1,28 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+  ms-publisher:
+    container_name: ms-publisher
+    build: 
+      context: .
+      dockerfile: ./packages/microservice-publisher/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+  ms-consumer:
+    container_name: ms-consumer
+    build: 
+      context: .
+      dockerfile: ./packages/microservice-consumer/Dockerfile
+    depends_on:
+      - redis
+volumes:
+  redis-data:

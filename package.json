@@ -1,0 +1,21 @@
+{
+  "name": "redis-broker-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "yarn dev:consumer & yarn dev:publisher",
+    "dev:publisher": "yarn workspace @redisbroker/microservice-publisher dev",
+    "dev:consumer": "yarn workspace @redisbroker/microservice-consumer dev",
+    "build:consumer": "yarn workspace @redisbroker/microservice-consumer build",
+    "build:publisher": "yarn workspace @redisbroker/microservice-publisher build",
+    "build": "yarn build:consumer & yarn build:publisher"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "keywords": ["nodejs", "redis", "broker", "pubsub", "redis-broker"],
+  "author": "<kikoken />",
+  "license": "ISC"
+}
