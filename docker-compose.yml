@@ -10,18 +10,18 @@ services:
     command: ["redis-server", "--appendonly", "yes"]
   ms-publisher:
     container_name: ms-publisher
-    build: 
-      context: .
-      dockerfile: ./packages/microservice-publisher/Dockerfile
+    build:
+      context: ./packages/microservice-publisher
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
       - redis
   ms-consumer:
     container_name: ms-consumer
-    build: 
-      context: .
-      dockerfile: ./packages/microservice-consumer/Dockerfile
+    build:
+      context: ./packages/microservice-consumer
+      dockerfile: Dockerfile
     depends_on:
       - redis
 volumes:

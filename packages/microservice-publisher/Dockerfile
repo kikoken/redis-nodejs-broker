@@ -10,7 +10,7 @@ COPY package*.json .
 RUN npm install
 
 # Copiar el resto de los archivos
-COPY . .
+COPY ./dist ./dist
 
 # Exponer el puerto
 EXPOSE 3000
