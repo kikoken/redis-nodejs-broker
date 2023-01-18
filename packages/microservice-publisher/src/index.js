@@ -1,9 +1,14 @@
 import express, { json } from 'express';
+import dotenv from 'dotenv';
 import * as redis from 'redis';
 import pino from 'pino';
 
+dotenv.config();
+
 const app = express();
-const client = redis.createClient();
+const client = redis.createClient({
+    url: process.env.REDIS_URL || 'redis://localhost:6379'
+  });
 const logger = pino({ level: 'info' });
 
 const PORT = process.env.PORT || 3000

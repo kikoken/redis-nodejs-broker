@@ -1,6 +1,13 @@
-const redis = require('redis');
-const client = redis.createClient();
+import * as redis from 'redis'
+import dotenv from 'dotenv'
+
+
+const client = redis.createClient({
+  url: process.env.REDIS_URL || 'redis://localhost:6379'
+});
 const CHANNEL = 'channel';
+
+dotenv.config();
 
 (async () => {
     const subscriber = client.duplicate();

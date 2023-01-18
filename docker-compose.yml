@@ -13,6 +13,8 @@ services:
     build:
       context: ./packages/microservice-publisher
       dockerfile: Dockerfile
+    environment:
+      - REDIS_URL=redis://redis
     ports:
       - "3000:3000"
     depends_on:
@@ -22,6 +24,8 @@ services:
     build:
       context: ./packages/microservice-consumer
       dockerfile: Dockerfile
+    environment:
+      - REDIS_URL=redis://redis
     depends_on:
       - redis
 volumes:
