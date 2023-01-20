@@ -3,7 +3,7 @@ MESSAGE={"message": "Hello World"}
 
 send:
 ifdef msg
-	curl -X POST -H "Content-Type: application/json" -d '${msg}' ${API_URL}
+	curl -X POST -H "Content-Type: application/json" -d '{"message": "${msg}"}' ${API_URL}
 else
 	curl -X POST -H "Content-Type: application/json" -d '${MESSAGE}' ${API_URL}
 endif
